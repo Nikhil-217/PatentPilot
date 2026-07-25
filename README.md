@@ -17,7 +17,7 @@ PatentPilot is designed as a unified monorepo divided into two distinct services
 ```mermaid
 graph TD
     User[Researcher] -->|Submits SMILES Form| FE[Next.js Frontend]
-    FE -->|POST /api/analyses| BE[FastAPI Backend]
+    FE -->|"POST /api/analyses"| BE[FastAPI Backend]
     BE -->|Calculates InChIKey & coordinate bonds| RDKit[RDKit Chemical Engine]
     BE -->|Calculates Cosine Semantic score| HF[HuggingFace SentenceTransformers]
     BE -->|Retrieves/Scores matched patents| DB[(MongoDB Atlas)]
@@ -25,12 +25,12 @@ graph TD
     BE -->|Saves results| DB
     BE -->|Returns analysis ID| FE
     FE -->|Requests 2D drawing| BE
-    BE -->|GET /api/analyses/render| RDKit
+    BE -->|"GET /api/analyses/render"| RDKit
     RDKit -->|Returns SVG XML| FE
     FE -->|Interactive Review Notes & Flags| BE
-    BE -->|PATCH /api/analyses/{id}/patents/{patent_id}| DB
+    BE -->|"PATCH /api/analyses/{id}/patents/{patent_id}"| DB
     FE -->|Request PDF Report| BE
-    BE -->|GET /api/analyses/{id}/report/download| PDF[ReportLab PDF Engine]
+    BE -->|"GET /api/analyses/{id}/report/download"| PDF[ReportLab PDF Engine]
     PDF -->|Streams PDF Attachment| User
 ```
 
