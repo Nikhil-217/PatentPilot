@@ -244,50 +244,56 @@ function AnalysisDashboardPageInner({ params }: PageProps) {
             // Clean leading/trailing stars from the segment
             trimmed = trimmed.replace(/^\*+/, '').trim();
             
-            let header = "Analysis Details";
-            let body = trimmed;
-            
             // Match leading number prefix e.g. "1. Why retrieved:"
-            const numMatch = trimmed.match(/^(\d+\.\s*)/);
+            const digitMatch = trimmed.match(/^(\d+)\.\s*/);
+            let header = "Analysis Details";
             let contentStart = 0;
-            if (numMatch) {
-              contentStart = numMatch[0].length;
+            
+            if (digitMatch) {
+              contentStart = digitMatch[0].length;
+              const digit = parseInt(digitMatch[1], 10);
+              if (digit === 1) {
+                header = "Why was this patent retrieved?";
+              } else if (digit === 2) {
+                header = "Which aspects appear similar?";
+              } else if (digit === 3) {
+                header = "What possible overlap exists?";
+              } else if (digit === 4) {
+                header = "How confident is this assessment?";
+              }
             }
             
-            const rest = trimmed.slice(contentStart).trim();
+            let rest = trimmed.slice(contentStart).trim();
+            // Strip any leading asterisks (e.g., from **Why was this patent retrieved?**)
+            rest = rest.replace(/^\*+/, '').trim();
             
-            // Check for specific headers in rest
+            // Check for specific headers in rest and clean them up if they exist in the text body
             const lowercaseRest = rest.toLowerCase();
             let headingFound = "";
             
             if (lowercaseRest.startsWith("why was this patent retrieved") || lowercaseRest.startsWith("why retrieved") || lowercaseRest.startsWith("why")) {
-              header = "Why Retrieved";
               headingFound = rest.match(/^(why was this patent retrieved|why retrieved|why)/i)?.[0] || "";
             } else if (lowercaseRest.startsWith("which aspects appear similar") || lowercaseRest.startsWith("similar aspects") || lowercaseRest.startsWith("similarities") || lowercaseRest.startsWith("similar")) {
-              header = "Similar Aspects";
               headingFound = rest.match(/^(which aspects appear similar|similar aspects|similarities|similar)/i)?.[0] || "";
             } else if (lowercaseRest.startsWith("what possible overlap exists") || lowercaseRest.startsWith("potential overlap") || lowercaseRest.startsWith("possible overlap") || lowercaseRest.startsWith("overlap")) {
-              header = "Potential Overlap";
               headingFound = rest.match(/^(what possible overlap exists|potential overlap|possible overlap|overlap)/i)?.[0] || "";
             } else if (lowercaseRest.startsWith("how confident is this assessment") || lowercaseRest.startsWith("confidence assessment") || lowercaseRest.startsWith("confidence") || lowercaseRest.startsWith("confident")) {
-              header = "Confidence Assessment";
               headingFound = rest.match(/^(how confident is this assessment|confidence assessment|confidence|confident)/i)?.[0] || "";
             }
             
+            let body = rest;
             if (headingFound) {
               body = rest.slice(headingFound.length).trim();
-              // Clean any leading punctuation (colons, question marks, stars, dashes, spaces) from the body
-              body = body.replace(/^[:\-\s\?\*]+/, '').trim();
-            } else {
-              body = rest;
             }
             
+            // Clean any leading punctuation (colons, question marks, stars, dashes, spaces) from the body
+            body = body.replace(/^[:\-\s\?\*]+/, '').trim();
             // Clean any trailing stars
             body = body.replace(/^\*+/, '').replace(/\*+$/, '').trim();
             
             return (
               <div key={idx} className="border-l-2 border-primary/30 pl-3.5 py-0.5">
-                <h5 className="text-[11px] font-bold text-primary capitalize mb-1">{header}</h5>
+                <h5 className="text-[11px] font-bold text-primary mb-1">{header}</h5>
                 <p className="text-xs text-on-surface-variant leading-relaxed">{body}</p>
               </div>
             );

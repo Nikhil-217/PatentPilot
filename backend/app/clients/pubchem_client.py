@@ -4,6 +4,33 @@ from typing import List, Dict, Any
 from urllib.parse import quote
 
 class PubChemClient:
+    async def fetch_compound_properties(self, inchikey: str) -> Dict[str, Any]:
+        """
+        Fetches the Title (common name) and MolecularFormula of a compound from PubChem using its InChIKey.
+        """
+        cids = await self._get_cids_by_inchikey(inchikey)
+        if not cids:
+            return {}
+        cid = cids[0]
+        
+        url = f"https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/{cid}/property/Title,MolecularFormula,IUPACName/JSON"
+        try:
+            async with httpx.AsyncClient(timeout=10.0) as client:
+                res = await client.get(url)
+                if res.status_code == 200:
+                    data = res.json()
+                    props = data.get("PropertyTable", {}).get("Properties", [])
+                    if props:
+                        return {
+                            "chemical_name": props[0].get("Title"),
+                            "formula": props[0].get("MolecularFormula"),
+                            "iupac_name": props[0].get("IUPACName"),
+                            "cid": cid
+                        }
+        except Exception as e:
+            print(f"Error fetching compound properties from CID {cid}: {e}")
+        return {"cid": cid}
+
     async def fetch_patents_for_inchikey(self, inchikey: str) -> List[Dict[str, Any]]:
         # Fetch CID from InChIKey
         cids = await self._get_cids_by_inchikey(inchikey)

@@ -2,7 +2,7 @@ import asyncio
 from typing import List, Dict, Any
 from sentence_transformers import SentenceTransformer
 from app.models.patent import PatentRecord
-from app.schemas.analysis import SourceEnum
+from app.schemas.analysis import SourceEnum, RecommendationTier, RiskTier
 from app.clients.pubchem_client import PubChemClient
 from app.clients.surechembl_client import SureChemblClient
 from app.clients.google_patents_client import GooglePatentsClient
@@ -24,6 +24,33 @@ class RetrievalService:
             return
             
         analysis.status = AnalysisStatus.RETRIEVING
+        await analysis.save()
+        
+        # Resolve chemical metadata (name & formula)
+        chemical_name = None
+        formula = None
+        
+        if analysis.inchikey:
+            try:
+                props = await self.pubchem.fetch_compound_properties(analysis.inchikey)
+                chemical_name = props.get("chemical_name")
+                formula = props.get("formula")
+            except Exception as e:
+                print(f"Error fetching compound properties: {e}")
+                
+        # Fallback for formula using RDKit
+        if not formula and analysis.canonical_smiles:
+            try:
+                from rdkit import Chem
+                from rdkit.Chem import rdMolDescriptors
+                mol = Chem.MolFromSmiles(analysis.canonical_smiles)
+                if mol:
+                    formula = rdMolDescriptors.CalcMolFormula(mol)
+            except Exception as e:
+                print(f"Error calculating molecular formula: {e}")
+                
+        analysis.chemical_name = chemical_name or "Unidentified Compound"
+        analysis.formula = formula or "N/A"
         await analysis.save()
         
         # 1. Fetch concurrently
@@ -125,6 +152,38 @@ class RetrievalService:
             matches.append(match)
             
         analysis.patent_matches = matches
+        
+        # Calculate overall recommendation based on patent matches
+        overall_rec = RecommendationTier.LOW_RISK
+        has_requires_review = False
+        
+        # Check if query compound is a known public domain drug/chemical
+        is_public_domain = False
+        chem_name = getattr(analysis, "chemical_name", "") or ""
+        chem_name_lower = chem_name.lower().strip()
+        public_domain_chemicals = ["caffeine", "acetaminophen", "paracetamol", "aspirin", "salicylic acid", "curcumin", "salicin", "benzene"]
+        if any(pd in chem_name_lower for pd in public_domain_chemicals):
+            is_public_domain = True
+            
+        # Also check if closest patent matches are all expired (older than 20 years)
+        from datetime import datetime, timezone
+        current_year = datetime.now(timezone.utc).date().year
+        if saved_patents and all(
+            (current_year - p.publication_date.year > 20) if p.publication_date else True
+            for p in saved_patents
+        ):
+            is_public_domain = True
+            
+        for m in matches:
+            if m.risk_tier == RiskTier.HIGH:
+                overall_rec = RecommendationTier.HIGH_RISK
+            elif m.risk_tier == RiskTier.REQUIRES_REVIEW:
+                has_requires_review = True
+                
+        if overall_rec != RecommendationTier.HIGH_RISK and (has_requires_review or is_public_domain):
+            overall_rec = RecommendationTier.REQUIRES_REVIEW
+            
+        analysis.overall_recommendation = overall_rec
         analysis.status = AnalysisStatus.READY_FOR_REVIEW
         await analysis.save()
 

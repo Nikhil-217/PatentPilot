@@ -78,11 +78,13 @@ def generate_pdf_report(analysis_record, report_data) -> bytes:
     meta_data = [
         [Paragraph("<b>Analysis ID:</b>", body_style), Paragraph(str(analysis_record.id), body_style)],
         [Paragraph("<b>Generated At:</b>", body_style), Paragraph(rec_time, body_style)],
+        [Paragraph("<b>Chemical Entity:</b>", body_style), Paragraph(getattr(analysis_record, "chemical_name", "Unidentified Compound") or "Unidentified Compound", body_style)],
+        [Paragraph("<b>Molecular Formula:</b>", body_style), Paragraph(getattr(analysis_record, "formula", "N/A") or "N/A", body_style)],
         [Paragraph("<b>SMILES Notation:</b>", body_style), Paragraph(analysis_record.smiles_input or "N/A", mono_style)],
         [Paragraph("<b>Biological Target:</b>", body_style), Paragraph(analysis_record.target or "Not specified", body_style)],
         [Paragraph("<b>Therapeutic Indication:</b>", body_style), Paragraph(analysis_record.indication or "Not specified", body_style)],
     ]
-    t = Table(meta_data, colWidths=[120, 380])
+    t = Table(meta_data, colWidths=[130, 370])
     t.setStyle(TableStyle([
         ('VALIGN', (0,0), (-1,-1), 'TOP'),
         ('BOTTOMPADDING', (0,0), (-1,-1), 4),

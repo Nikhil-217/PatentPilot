@@ -25,6 +25,7 @@ class AIService:
             input_variables=["title", "abstract", "query_context", "structural", "semantic", "metadata", "composite"],
             template="""You are a patent analysis AI. Explain why this patent was matched to the user's query.
 Avoid generic boilerplate phrasing. Be specific about what overlaps.
+Do NOT include any conversational introduction, preamble, or concluding text. Start directly with the numbered list.
 You MUST structure your explanation to answer the following four questions clearly:
 1. Why was this patent retrieved?
 2. Which aspects appear similar?
@@ -121,11 +122,69 @@ Explanation:"""
         # Sort key similar by score descending
         key_similar.sort(key=lambda x: x["composite_risk_score"], reverse=True)
 
-        max_score = key_similar[0]["composite_risk_score"] if key_similar else 0.0
-        confidence_level = 0.90 if max_score > 50 else 0.95
-        
-        # Synthesize summaries based on risk tier
-        if overall_rec == RecommendationTier.HIGH_RISK:
+        # Calibrate confidence dynamically
+        confidence_level = 0.95
+        if not patents:
+            confidence_level = 0.80
+        else:
+            # 1. Structural similarity margin deduction (Near-misses)
+            near_misses = [m for m in analysis_record.patent_matches if 20.0 <= m.structural_score < 40.0]
+            if near_misses:
+                confidence_level -= 0.15
+                
+            # 2. Missing patent metadata deductions
+            missing_metadata_deduction = 0.0
+            for p in patents:
+                if not p.abstract:
+                    missing_metadata_deduction += 0.03
+                if not p.assignee or p.assignee.lower() == "unknown assignee":
+                    missing_metadata_deduction += 0.02
+            confidence_level -= min(0.15, missing_metadata_deduction)
+            
+        confidence_level = max(0.50, min(0.99, confidence_level))
+        confidence_level = round(confidence_level, 2)
+
+        # Check if query compound is a known public domain drug/chemical
+        is_public_domain = False
+        chem_name = getattr(analysis_record, "chemical_name", "") or ""
+        chem_name_lower = chem_name.lower().strip()
+        public_domain_chemicals = ["caffeine", "acetaminophen", "paracetamol", "aspirin", "salicylic acid", "curcumin", "salicin", "benzene"]
+        if any(pd in chem_name_lower for pd in public_domain_chemicals):
+            is_public_domain = True
+            
+        # Also check if closest patent matches are all expired (older than 20 years)
+        from datetime import datetime, timezone
+        current_year = datetime.now(timezone.utc).date().year
+        if patents and all(
+            (current_year - p.publication_date.year > 20) if p.publication_date else True
+            for p in patents
+        ):
+            is_public_domain = True
+
+        # Synthesize summaries based on risk tier and public domain status
+        if is_public_domain:
+            exec_summary = (
+                f"The freedom-to-operate (FTO) review identifies the subject compound as a public domain compound "
+                f"({chem_name or 'off-patent composition of matter'}). While the core chemical composition is off-patent "
+                f"and carries low composition-of-matter risk, formulation patents apply. Active secondary patents "
+                f"protecting specific formulations, dosage forms, delivery methods, or combinations may still represent "
+                f"an FTO block, requiring expert review."
+            )
+            novelty_concerns = (
+                f"Novelty concerns for the core compound are negligible as it represents a widely known public domain "
+                f"active substance. However, secondary formulation and composition-of-use claims by competitors (such as "
+                f"{', '.join(list(set(p.assignee for p in patents if p.assignee))[:2]) or 'existing assignees'}) require careful "
+                f"clearance prior to commercial formulation development."
+            )
+            methodology = (
+                f"Clearance status resolved recognizing the public domain nature of the core compound. Risk is categorized "
+                f"based on the active status of secondary patents containing formulation/dosage claims rather than core "
+                f"chemical structure similarity."
+            )
+            # If there are active formulation patents, it requires review
+            if overall_rec == RecommendationTier.LOW_RISK:
+                overall_rec = RecommendationTier.REQUIRES_REVIEW
+        elif overall_rec == RecommendationTier.HIGH_RISK:
             exec_summary = (
                 f"The freedom-to-operate (FTO) review of the subject compound indicates a HIGH PATENT RISK. "
                 f"Multiple active patents exhibit substantial structural and semantic overlap with the submitted SMILES string. "

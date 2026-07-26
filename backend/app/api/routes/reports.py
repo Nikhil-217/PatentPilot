@@ -21,6 +21,8 @@ async def generate_report(id: PydanticObjectId):
     
     report = ai_service.synthesize_report(analysis, patents)
     analysis.report = report
+    analysis.overall_recommendation = report.overall_recommendation
+    analysis.status = "reported"
     analysis.updated_at = datetime.now(timezone.utc)
     await analysis.save()
     

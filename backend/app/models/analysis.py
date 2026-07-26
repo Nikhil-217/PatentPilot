@@ -8,6 +8,8 @@ class AnalysisRecord(Document):
     smiles_input: str
     canonical_smiles: Optional[str] = None
     inchikey: Optional[str] = None
+    chemical_name: Optional[str] = None
+    formula: Optional[str] = None
     target: Optional[str] = None
     indication: Optional[str] = None
     status: AnalysisStatus = AnalysisStatus.PENDING
