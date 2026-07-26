@@ -15,12 +15,14 @@ class PubChemClient:
         
         patents = []
         for cid in cids:
+            smiles = await self._get_smiles_by_cid(cid)
             pids = await self._get_patent_ids_by_cid(cid)
             # Limit to top 2 patent IDs per CID
             for pid in pids[:2]:
                 detail = await self._get_patent_detail(pid)
                 if detail:
                     detail["source"] = "pubchem"
+                    detail["smiles"] = smiles
                     patents.append(detail)
         return patents
 
@@ -105,4 +107,18 @@ class PubChemClient:
                     }
         except Exception as e:
             print(f"Error fetching patent details for {patent_id}: {e}")
+        return None
+
+    async def _get_smiles_by_cid(self, cid: int) -> str | None:
+        url = f"https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/{cid}/property/CanonicalSMILES/JSON"
+        try:
+            async with httpx.AsyncClient(timeout=10.0) as client:
+                res = await client.get(url)
+                if res.status_code == 200:
+                    data = res.json()
+                    props = data.get("PropertyTable", {}).get("Properties", [])
+                    if props:
+                        return props[0].get("CanonicalSMILES")
+        except Exception as e:
+            print(f"Error fetching SMILES for CID {cid}: {e}")
         return None

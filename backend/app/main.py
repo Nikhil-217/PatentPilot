@@ -43,6 +43,16 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+@app.get("/")
+def read_root():
+    return {
+        "status": "online",
+        "service": "PatentPilot API Backend",
+        "version": "1.0.0",
+        "docs_url": "/docs",
+        "health_url": "/api/health"
+    }
+
 app.include_router(health_router, prefix="/api")
 app.include_router(analyses_router, prefix="/api/analyses", tags=["Analyses"])
 app.include_router(reports_router, prefix="/api/analyses", tags=["Reports"])

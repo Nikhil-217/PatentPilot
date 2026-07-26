@@ -53,18 +53,18 @@ function HeaderContent() {
   const hasActiveAnalysis = !!activeAnalysisId;
 
   return (
-    <div className="flex justify-between items-center px-margin-desktop py-2.5 w-full max-w-container-max mx-auto">
-      <div className="flex items-center gap-6">
-        <Link href="/" className="flex items-center gap-2 mr-2">
-          <span className="material-symbols-outlined text-[24px] text-primary" style={{ fontVariationSettings: "'FILL' 1" }}>eco</span>
-          <span className="font-bold text-primary tracking-tight text-base">PatentPilot</span>
+    <div className="flex justify-between items-center px-margin-desktop py-4 w-full max-w-container-max mx-auto">
+      <div className="flex items-center gap-8">
+        <Link href="/" className="flex items-center gap-2.5 mr-4">
+          <span className="material-symbols-outlined text-[28px] text-primary" style={{ fontVariationSettings: "'FILL' 1" }}>eco</span>
+          <span className="font-bold text-primary tracking-tight text-lg">PatentPilot</span>
         </Link>
         
         {/* Unified 5-Tab Navigation Bar */}
-        <nav className="hidden md:flex gap-1 items-center bg-surface-container-low border border-outline-variant/40 p-1 rounded-lg">
+        <nav className="hidden md:flex gap-1.5 items-center bg-surface-container-low border border-outline-variant/40 p-1.5 rounded-xl">
           <Link 
             href="/analysis/new"
-            className={`px-4 py-1.5 rounded-md text-xs font-bold transition-all ${
+            className={`px-5 py-2.5 rounded-lg text-[13px] font-bold transition-all ${
               activeTab === 'submission' 
                 ? 'bg-primary text-on-primary shadow-sm' 
                 : 'text-on-surface-variant hover:text-primary hover:bg-surface-container-high/40'
@@ -76,7 +76,7 @@ function HeaderContent() {
           {hasActiveAnalysis ? (
             <Link 
               href={getAnalysisLink('patents')}
-              className={`px-4 py-1.5 rounded-md text-xs font-bold transition-all ${
+              className={`px-5 py-2.5 rounded-lg text-[13px] font-bold transition-all ${
                 activeTab === 'patents' 
                   ? 'bg-primary text-on-primary shadow-sm' 
                   : 'text-on-surface-variant hover:text-primary hover:bg-surface-container-high/40'
@@ -87,7 +87,7 @@ function HeaderContent() {
           ) : (
             <span 
               title="Submit a molecule to unlock patent reports"
-              className="px-4 py-1.5 rounded-md text-xs font-bold text-outline-variant cursor-not-allowed opacity-50 select-none"
+              className="px-5 py-2.5 rounded-lg text-[13px] font-bold text-outline-variant cursor-not-allowed opacity-50 select-none"
             >
               Patent Reports
             </span>
@@ -96,7 +96,7 @@ function HeaderContent() {
           {hasActiveAnalysis ? (
             <Link 
               href={getAnalysisLink('ai')}
-              className={`px-4 py-1.5 rounded-md text-xs font-bold transition-all ${
+              className={`px-5 py-2.5 rounded-lg text-[13px] font-bold transition-all ${
                 activeTab === 'ai' 
                   ? 'bg-primary text-on-primary shadow-sm' 
                   : 'text-on-surface-variant hover:text-primary hover:bg-surface-container-high/40'
@@ -107,7 +107,7 @@ function HeaderContent() {
           ) : (
             <span 
               title="Submit a molecule to unlock AI analysis"
-              className="px-4 py-1.5 rounded-md text-xs font-bold text-outline-variant cursor-not-allowed opacity-50 select-none"
+              className="px-5 py-2.5 rounded-lg text-[13px] font-bold text-outline-variant cursor-not-allowed opacity-50 select-none"
             >
               AI Analysis
             </span>
@@ -116,7 +116,7 @@ function HeaderContent() {
           {hasActiveAnalysis ? (
             <Link 
               href={getAnalysisLink('report')}
-              className={`px-4 py-1.5 rounded-md text-xs font-bold transition-all ${
+              className={`px-5 py-2.5 rounded-lg text-[13px] font-bold transition-all ${
                 activeTab === 'report' 
                   ? 'bg-primary text-on-primary shadow-sm' 
                   : 'text-on-surface-variant hover:text-primary hover:bg-surface-container-high/40'
@@ -127,7 +127,7 @@ function HeaderContent() {
           ) : (
             <span 
               title="Submit a molecule to unlock executability reports"
-              className="px-4 py-1.5 rounded-md text-xs font-bold text-outline-variant cursor-not-allowed opacity-50 select-none"
+              className="px-5 py-2.5 rounded-lg text-[13px] font-bold text-outline-variant cursor-not-allowed opacity-50 select-none"
             >
               Executability Report
             </span>
@@ -135,7 +135,7 @@ function HeaderContent() {
 
           <Link 
             href="/history"
-            className={`px-4 py-1.5 rounded-md text-xs font-bold transition-all ${
+            className={`px-5 py-2.5 rounded-lg text-[13px] font-bold transition-all ${
               activeTab === 'history' 
                 ? 'bg-primary text-on-primary shadow-sm' 
                 : 'text-on-surface-variant hover:text-primary hover:bg-surface-container-high/40'

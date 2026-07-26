@@ -71,6 +71,7 @@ class RetrievalService:
                     publication_date=p_data.get("publication_date"),
                     assignee=p_data.get("assignee"),
                     legal_status=p_data.get("legal_status"),
+                    smiles=p_data.get("smiles"),
                     embedding=emb
                 )
                 await record.insert()
@@ -101,9 +102,12 @@ class RetrievalService:
         
         matches = []
         for p in saved_patents:
-            # We mock patent_fingerprint for now if it comes from a structure search
-            # In a real app we'd compute it from the patent's SMILES if available
-            p_fp = query_fp if p.source in [SourceEnum.PUBCHEM, SourceEnum.SURECHEMBL] else None
+            p_fp = None
+            if p.smiles:
+                try:
+                    p_fp = get_morgan_fingerprint(p.smiles)
+                except Exception:
+                    pass
             
             score_data = ScoringService.score_patent(p, query_embedding, query_fp, p_fp)
             
@@ -134,7 +138,8 @@ class RetrievalService:
                 "abstract": "The present invention relates to curcuminoid compositions having an activity-enhancing effect, comprising curcumin, demethoxycurcumin, bisdemethoxycurcumin, and tetrahydrocurcuminoid derivatives for anti-inflammatory, antioxidant, and therapeutic pathways.",
                 "legal_status": "Active",
                 "publication_date": "2001-09-18",
-                "assignee": "Sabinsa Corporation"
+                "assignee": "Sabinsa Corporation",
+                "smiles": "COC1=C(C=CC(=C1)C=CC(=O)CC(=O)C=CC2=CC(=C(C=C2)OC)O)O"
             },
             {
                 "patent_number": "EP-1981504-B1",
@@ -144,7 +149,8 @@ class RetrievalService:
                 "abstract": "Novel acetylsalicylic acid derivatives and pharmaceutically acceptable salts thereof are disclosed. These compounds exhibit potent analgesic and anti-inflammatory activity, serving as highly selective COX inhibitors with reduced gastric side effects.",
                 "legal_status": "Active",
                 "publication_date": "2010-06-12",
-                "assignee": "Bayer AG"
+                "assignee": "Bayer AG",
+                "smiles": "CC(=O)OC1=CC=CC=C1C(=O)O"
             },
             {
                 "patent_number": "US-20150246029-A1",
@@ -154,6 +160,7 @@ class RetrievalService:
                 "abstract": "The invention describes a standardized Salix bark extract having a high content of salicin derivatives, methods for its preparation, and its therapeutic use for treating rheumatic pains, osteoarthrosis, and acute inflammation.",
                 "legal_status": "Pending",
                 "publication_date": "2015-09-03",
-                "assignee": "Dr. Willmar Schwabe GmbH & Co. KG"
+                "assignee": "Dr. Willmar Schwabe GmbH & Co. KG",
+                "smiles": "C1=CC=C(C(=C1)CO)OC2C(C(C(C(O2)CO)O)O)O"
             }
         ]

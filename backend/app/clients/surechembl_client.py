@@ -19,12 +19,14 @@ class SureChemblClient:
         pubchem = PubChemClient()
         
         for cid in cids:
+            compound_smiles = await pubchem._get_smiles_by_cid(cid)
             pids = await pubchem._get_patent_ids_by_cid(cid)
             # Limit to top 2 patents per CID
             for pid in pids[:2]:
                 detail = await pubchem._get_patent_detail(pid)
                 if detail:
                     detail["source"] = "surechembl"
+                    detail["smiles"] = compound_smiles
                     patents.append(detail)
         return patents
 

@@ -13,6 +13,7 @@ class PatentRecord(Document):
     source: SourceEnum
     source_url: str
     legal_status: Optional[str] = None
+    smiles: Optional[str] = None
     embedding: Optional[List[float]] = None
     first_seen_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
 

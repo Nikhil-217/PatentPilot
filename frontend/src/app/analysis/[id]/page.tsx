@@ -232,22 +232,58 @@ function AnalysisDashboardPageInner({ params }: PageProps) {
   const formatAIExplanation = (exp: string) => {
     if (!exp) return <p className="text-xs text-on-surface-variant leading-relaxed">No AI analysis available.</p>;
     
-    // Check for "1. Why retrieved" structure
-    if (exp.includes("1. ") || exp.includes("Why retrieved") || exp.includes("Similar aspects")) {
-      const segments = exp.split(/(?=\b\d\.\s|Why retrieved|Similar aspects|Potential overlap|Confidence)/gi);
+    // Split strictly on numbered boundaries (e.g. 1., 2., 3., 4. or **1., **2., etc.)
+    const segments = exp.split(/(?=\b\d\.\s|\*\*\d\.\s)/g);
+    if (segments.length > 1) {
       return (
         <div className="space-y-4">
           {segments.map((seg, idx) => {
-            const trimmed = seg.trim();
+            let trimmed = seg.trim();
             if (!trimmed) return null;
-            let header = "Details";
+            
+            // Clean leading/trailing stars from the segment
+            trimmed = trimmed.replace(/^\*+/, '').trim();
+            
+            let header = "Analysis Details";
             let body = trimmed;
             
-            const matchHeader = trimmed.match(/^(\d\.\s+)?([^:]+):/i);
-            if (matchHeader) {
-              header = matchHeader[2].replace(/^(Why |Which |What |How )/gi, '').trim();
-              body = trimmed.slice(matchHeader[0].length).trim();
+            // Match leading number prefix e.g. "1. Why retrieved:"
+            const numMatch = trimmed.match(/^(\d+\.\s*)/);
+            let contentStart = 0;
+            if (numMatch) {
+              contentStart = numMatch[0].length;
             }
+            
+            const rest = trimmed.slice(contentStart).trim();
+            
+            // Check for specific headers in rest
+            const lowercaseRest = rest.toLowerCase();
+            let headingFound = "";
+            
+            if (lowercaseRest.startsWith("why was this patent retrieved") || lowercaseRest.startsWith("why retrieved") || lowercaseRest.startsWith("why")) {
+              header = "Why Retrieved";
+              headingFound = rest.match(/^(why was this patent retrieved|why retrieved|why)/i)?.[0] || "";
+            } else if (lowercaseRest.startsWith("which aspects appear similar") || lowercaseRest.startsWith("similar aspects") || lowercaseRest.startsWith("similarities") || lowercaseRest.startsWith("similar")) {
+              header = "Similar Aspects";
+              headingFound = rest.match(/^(which aspects appear similar|similar aspects|similarities|similar)/i)?.[0] || "";
+            } else if (lowercaseRest.startsWith("what possible overlap exists") || lowercaseRest.startsWith("potential overlap") || lowercaseRest.startsWith("possible overlap") || lowercaseRest.startsWith("overlap")) {
+              header = "Potential Overlap";
+              headingFound = rest.match(/^(what possible overlap exists|potential overlap|possible overlap|overlap)/i)?.[0] || "";
+            } else if (lowercaseRest.startsWith("how confident is this assessment") || lowercaseRest.startsWith("confidence assessment") || lowercaseRest.startsWith("confidence") || lowercaseRest.startsWith("confident")) {
+              header = "Confidence Assessment";
+              headingFound = rest.match(/^(how confident is this assessment|confidence assessment|confidence|confident)/i)?.[0] || "";
+            }
+            
+            if (headingFound) {
+              body = rest.slice(headingFound.length).trim();
+              // Clean any leading punctuation (colons, question marks, stars, dashes, spaces) from the body
+              body = body.replace(/^[:\-\s\?\*]+/, '').trim();
+            } else {
+              body = rest;
+            }
+            
+            // Clean any trailing stars
+            body = body.replace(/^\*+/, '').replace(/\*+$/, '').trim();
             
             return (
               <div key={idx} className="border-l-2 border-primary/30 pl-3.5 py-0.5">
@@ -259,17 +295,42 @@ function AnalysisDashboardPageInner({ params }: PageProps) {
         </div>
       );
     }
+    
     return <p className="text-xs text-on-surface-variant leading-relaxed">{exp}</p>;
   };
 
   const getRecommendationStyles = (tier: string) => {
     switch (tier) {
       case 'high_risk':
-        return { label: 'High Patent Risk', bg: 'bg-error-container', text: 'text-on-error-container', border: 'border-error/30', colorHex: '#ba1a1a' };
+        return { 
+          label: 'High Patent Risk', 
+          bg: 'bg-rose-50 border border-rose-200/50', 
+          text: 'text-rose-700', 
+          border: 'border-rose-200/50',
+          barBg: 'bg-rose-600', 
+          scoreText: 'text-rose-700',
+          colorHex: '#e11d48' 
+        };
       case 'requires_review':
-        return { label: 'Requires Expert Review', bg: 'bg-secondary-container', text: 'text-on-secondary-container', border: 'border-secondary/30', colorHex: '#745a39' };
+        return { 
+          label: 'Requires Expert Review', 
+          bg: 'bg-amber-50 border border-amber-200/50', 
+          text: 'text-amber-700', 
+          border: 'border-amber-200/50',
+          barBg: 'bg-amber-500', 
+          scoreText: 'text-amber-700',
+          colorHex: '#d97706' 
+        };
       default:
-        return { label: 'Low Patent Risk', bg: 'bg-primary-fixed', text: 'text-on-primary-fixed-variant', border: 'border-primary/30', colorHex: '#23472b' };
+        return { 
+          label: 'Low Patent Risk', 
+          bg: 'bg-emerald-50 border border-emerald-200/50', 
+          text: 'text-emerald-700', 
+          border: 'border-emerald-200/50',
+          barBg: 'bg-emerald-600', 
+          scoreText: 'text-emerald-700',
+          colorHex: '#059669' 
+        };
     }
   };
 

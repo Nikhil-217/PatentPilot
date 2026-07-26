@@ -40,18 +40,27 @@ class ScoringService:
             semantic_score = float(max(0.0, sim * 30.0))
 
         # 3. Metadata Component (0-20)
+        # 3. Metadata Component (0-20)
         metadata_score = 0.0
-        if patent.legal_status and patent.legal_status.lower() in ["active", "pending", "granted"]:
-            metadata_score += 10.0
-        
+        is_expired = False
         if patent.publication_date:
             years_ago = datetime.now(timezone.utc).date().year - patent.publication_date.year
-            if years_ago <= 5:
+            if years_ago > 20:
+                is_expired = True
+            elif years_ago <= 5:
                 metadata_score += 5.0
                 
-        # Mock assignee overlap check
-        if patent.assignee:
-            metadata_score += 5.0
+        if not is_expired:
+            if patent.legal_status and patent.legal_status.lower() in ["active", "pending", "granted"]:
+                metadata_score += 10.0
+            if patent.assignee:
+                metadata_score += 5.0
+        else:
+            # Expired patents (older than 20 years) carry zero FTO blockage potential!
+            # Scale down structural and semantic risks substantially
+            structural_score = structural_score * 0.1
+            semantic_score = semantic_score * 0.1
+            metadata_score = 0.0
 
         # Composite and Tier
         composite = structural_score + semantic_score + metadata_score
