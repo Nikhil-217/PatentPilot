@@ -18,23 +18,23 @@ Here is a visual overview of the PatentPilot FTO Workspace:
 
 ### 1. Molecular Submission & 2D Render
 *Submit structures with real-time feedback and RDKit validation:*
-<!-- Place screenshot here: e.g. ![Submission Page](assets/submission_page.png) -->
-> _**Developer Note:** Add a screenshot of `/analysis/new` showing the compact grid layout, the green-glowing 2D canvas, and a valid molecular drawing._
+![Submission Page](assets/molecular%20submission.png)
+
 
 ### 2. Interactive Patent Reports Dashboard
 *Filter, review, and toggle manual verification flags on matched patent documents:*
-<!-- Place screenshot here: e.g. ![Patent Reports](assets/patent_reports.png) -->
-> _**Developer Note:** Add a screenshot of the main workspace showing the soft rose (high risk) and emerald (low risk) table rows, relevance score bars, and the detailed patent metadata drawer._
+![Patent Reports](assets/patent%20reports.png)
+
 
 ### 3. AI-Assisted Claims Analysis
 *Inspect structural overlaps and confidence scores generated directly via Groq Llama-3:*
-<!-- Place screenshot here: e.g. ![AI Analysis](assets/ai_analysis.png) -->
-> _**Developer Note:** Add a screenshot of the third tab showing the border-accented AI breakdown (Why Retrieved, Similar Aspects, Potential Overlap, Confidence Assessment)._
+![AI Analysis](assets/ai%20analysis.png)
+
 
 ### 4. Executability PDF Report Compiler
 *Download and stream print-ready FTO PDFs compiled using ReportLab:*
-<!-- Place screenshot here: e.g. ![Executability Report](assets/pdf_report.png) -->
-> _**Developer Note:** Add a screenshot of the fourth tab showing the overall FTO rationale banner, executive summaries, and the "Download PDF Report" action button._
+![Executability Report](assets/report%20generated.png)
+
 
 ---
 
