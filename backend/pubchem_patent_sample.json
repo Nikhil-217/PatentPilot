@@ -1,0 +1,755 @@
+{
+  "Record": {
+    "RecordType": "Patent",
+    "RecordAccession": "AR-009428-A1",
+    "RecordTitle": "[Translated] PROCESS TO IMPROVE THE PERMEATION IN THE SKIN OF A PHARMACOLOGICALLY ACTIVE COMPOUND, APPLIED TOPICALLY, WHICH OTHERWISE HAS A LOW SPEED OF PENETRATION IN THE SKIN; DEVICES WITH COMPARTMENTS AND ASSEMBLY USEFUL IN SUCH PROCESS.",
+    "Section": [
+      {
+        "TOCHeading": "Record Description",
+        "Description": "Record Description",
+        "DisplayControls": {
+          "HideThisSection": true,
+          "MoveToTop": true
+        },
+        "Information": [
+          {
+            "ReferenceNumber": 2,
+            "Name": "Record Description",
+            "Value": {
+              "StringWithMarkup": [
+                {
+                  "String": "This web page summarizes information in PubChem about patent AR-009428-A1. This includes chemicals mentioned, as reported by PubChem contributors, as well as other content, such as title, abstract, and International Patent Classification (IPC) codes. To read more about how this page was constructed, please visit the PubChem patents help page.",
+                  "Markup": [
+                    {
+                      "Start": 318,
+                      "Length": 25,
+                      "URL": "https://pubchemdocs.ncbi.nlm.nih.gov/patents"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "TOCHeading": "Abstract",
+        "Description": "Abstract of this patent.",
+        "Information": [
+          {
+            "ReferenceNumber": 1,
+            "Name": "Abstract",
+            "Value": {
+              "StringWithMarkup": [
+                {
+                  "String": "[Translated] Process and means such as a compartment device or distribution assembly or transdermal device comprising backing layers (2), drug formulation (4), permeation enhancer formulation (6), membrane for pressure break (8) ) diffusion membrane (10), adhesive (12), and release coating (14), to improve the epidermal, transdermal, and dermal permeability of a pharmacologically active agent, topically applied (e.g., a drug or medicine such as: steroid, aspirin, phenyl butazone, enzyme inhibitor, among others), which has a low rate of penetration into the skin in the absence of a permeation enhancer and which is unstable and degraded during long-term storage with the particular permeability (such as: alcohols, fatty alcohols and their esters, among others). A first composition containing a drug, a salt thereof, a chemical derivative or formulation thereof in a dermatologically acceptable vehicle and a second composition containing a permeability enhancer of an acceptable vehicle. The compositions are physically separated up to application to a body or face surface and are topically applicable, either at the same time or sequentially over the course of a short period of time to each other, and mixed or combined to form a final active composition. on the skin. It allows a quantity of therapeutically effective drug to be delivered to the skin and to the systematic circulation, by the action of the permeation improver in the compositional agent at the point of use."
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "TOCHeading": "Full Text",
+        "Description": "Links to the complete patent document.",
+        "Information": [
+          {
+            "ReferenceNumber": 2,
+            "Name": "Espacenet",
+            "Value": {
+              "StringWithMarkup": [
+                {
+                  "String": "https://worldwide.espacenet.com/publicationDetails/biblio?FT=D&locale=en_EP&CC=AR&NR=009428A1&KC=A1",
+                  "Markup": [
+                    {
+                      "Start": 0,
+                      "Length": 99,
+                      "URL": "https://worldwide.espacenet.com/publicationDetails/biblio?FT=D&locale=en_EP&CC=AR&NR=009428A1&KC=A1"
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "ReferenceNumber": 1,
+            "Name": "Google",
+            "Value": {
+              "StringWithMarkup": [
+                {
+                  "String": "https://patents.google.com/patent/AR009428A1",
+                  "Markup": [
+                    {
+                      "Start": 0,
+                      "Length": 44,
+                      "URL": "https://patents.google.com/patent/AR009428A1"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "TOCHeading": "Important Dates",
+        "Description": "Key dates for this patent, including the priority date, filing date, publication date, and grant date.",
+        "Section": [
+          {
+            "TOCHeading": "Priority Date",
+            "Description": "The priority date of a claim is the date at which the novelty and inventiveness of the claimed invention is to be assessed.  It is the earliest filing date in a family of patent applications (a collection of patent applications covering the same or similar technical content).  As a result, in appropriate circumstances, the priority date of a claim may be earlier than the date of filing of the patent application in which it appears. ",
+            "DisplayControls": {
+              "MoveToTop": true
+            },
+            "Information": [
+              {
+                "ReferenceNumber": 1,
+                "Name": "Priority Date",
+                "Value": {
+                  "DateISO8601": [
+                    "1996/11/18"
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "TOCHeading": "Filing Date",
+            "Description": "The date when a patent application was filed in a patent office (i.e., the date on which that application is legally accepted at the patent office).  The patent offices in different countries have their own rules to determine the filing date of a patent application.",
+            "URL": "https://www.uspto.gov/learning-and-resources/glossary#sec-F",
+            "Information": [
+              {
+                "ReferenceNumber": 1,
+                "Name": "Filing Date",
+                "Value": {
+                  "DateISO8601": [
+                    "1997/11/14"
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "TOCHeading": "Publication Date",
+            "Description": "The publication date is the date on which a patent application is first published. It is the date on which the document is made available to the public, thereby making it part of the state of the art.",
+            "Information": [
+              {
+                "ReferenceNumber": 1,
+                "Name": "Publication Date",
+                "Value": {
+                  "DateISO8601": [
+                    "2000/04/12"
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "TOCHeading": "Assignee",
+        "Description": "Organization(s) and individual(s) that have an ownership interest in the legal rights a patent offers. There may or may not be an assignee.  An assignee is often the organization employing the inventor of the technology.  An assignee can also change at a later date.",
+        "DisplayControls": {
+          "MoveToTop": true
+        },
+        "Information": [
+          {
+            "ReferenceNumber": 1,
+            "Name": "Assignee",
+            "Value": {
+              "StringWithMarkup": [
+                {
+                  "String": "BRISTOL MYERS SQUIBB CO (US)"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "TOCHeading": "Country",
+        "Description": "The country or agency in which this patent was filed.",
+        "DisplayControls": {
+          "MoveToTop": true
+        },
+        "Information": [
+          {
+            "ReferenceNumber": 1,
+            "Name": "Country",
+            "Value": {
+              "StringWithMarkup": [
+                {
+                  "String": "Argentina"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "TOCHeading": "Linked Chemicals",
+        "Description": "Chemicals mentioned in this patent, according to the data contributor.  Links to the PubChem substances and compounds for these chemicals are also provided in this section.",
+        "Section": [
+          {
+            "TOCHeading": "PubChem Compounds",
+            "Description": "Links to PubChem Compound records mentioned in this patent.",
+            "Information": [
+              {
+                "ReferenceNumber": 2,
+                "Name": "PubChem Compounds",
+                "Value": {
+                  "ExternalTableName": "compound"
+                }
+              }
+            ]
+          },
+          {
+            "TOCHeading": "PubChem Substances",
+            "Description": "Links to PubChem Substance records mentioned in this patent.",
+            "Information": [
+              {
+                "ReferenceNumber": 2,
+                "Name": "PubChem Substances",
+                "Value": {
+                  "ExternalTableName": "substance"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "TOCHeading": "Patent Family",
+        "Description": "A patent family is a collection of patent applications and grant documents covering the same or similar technical content. The patent applications in a family are related to each other through priority claims.  They often covers the same invention disclosed by a common inventor(s) and patented in more than one country.",
+        "DisplayControls": {
+          "ListType": "Columns"
+        },
+        "Information": [
+          {
+            "ReferenceNumber": 1,
+            "Name": "Patent Family",
+            "Value": {
+              "StringWithMarkup": [
+                {
+                  "String": "AR-009428-A1"
+                },
+                {
+                  "String": "AT-E271393-T1",
+                  "Markup": [
+                    {
+                      "Start": 0,
+                      "Length": 13,
+                      "URL": "https://pubchem.ncbi.nlm.nih.gov/patent/AT-E271393-T1"
+                    }
+                  ]
+                },
+                {
+                  "String": "AU-4520097-A",
+                  "Markup": [
+                    {
+                      "Start": 0,
+                      "Length": 12,
+                      "URL": "https://pubchem.ncbi.nlm.nih.gov/patent/AU-4520097-A"
+                    }
+                  ]
+                },
+                {
+                  "String": "AU-742996-B2",
+                  "Markup": [
+                    {
+                      "Start": 0,
+                      "Length": 12,
+                      "URL": "https://pubchem.ncbi.nlm.nih.gov/patent/AU-742996-B2"
+                    }
+                  ]
+                },
+                {
+                  "String": "BR-9705487-A",
+                  "Markup": [
+                    {
+                      "Start": 0,
+                      "Length": 12,
+                      "URL": "https://pubchem.ncbi.nlm.nih.gov/patent/BR-9705487-A"
+                    }
+                  ]
+                },
+                {
+                  "String": "CA-2220377-A1",
+                  "Markup": [
+                    {
+                      "Start": 0,
+                      "Length": 13,
+                      "URL": "https://pubchem.ncbi.nlm.nih.gov/patent/CA-2220377-A1"
+                    }
+                  ]
+                },
+                {
+                  "String": "CN-1152672-C",
+                  "Markup": [
+                    {
+                      "Start": 0,
+                      "Length": 12,
+                      "URL": "https://pubchem.ncbi.nlm.nih.gov/patent/CN-1152672-C"
+                    }
+                  ]
+                },
+                {
+                  "String": "CN-1190001-A",
+                  "Markup": [
+                    {
+                      "Start": 0,
+                      "Length": 12,
+                      "URL": "https://pubchem.ncbi.nlm.nih.gov/patent/CN-1190001-A"
+                    }
+                  ]
+                },
+                {
+                  "String": "DE-69729932-D1",
+                  "Markup": [
+                    {
+                      "Start": 0,
+                      "Length": 14,
+                      "URL": "https://pubchem.ncbi.nlm.nih.gov/patent/DE-69729932-D1"
+                    }
+                  ]
+                },
+                {
+                  "String": "DE-69729932-T2",
+                  "Markup": [
+                    {
+                      "Start": 0,
+                      "Length": 14,
+                      "URL": "https://pubchem.ncbi.nlm.nih.gov/patent/DE-69729932-T2"
+                    }
+                  ]
+                },
+                {
+                  "String": "EP-0857488-A2",
+                  "Markup": [
+                    {
+                      "Start": 0,
+                      "Length": 13,
+                      "URL": "https://pubchem.ncbi.nlm.nih.gov/patent/EP-0857488-A2"
+                    }
+                  ]
+                },
+                {
+                  "String": "EP-0857488-A3",
+                  "Markup": [
+                    {
+                      "Start": 0,
+                      "Length": 13,
+                      "URL": "https://pubchem.ncbi.nlm.nih.gov/patent/EP-0857488-A3"
+                    }
+                  ]
+                },
+                {
+                  "String": "EP-0857488-B1",
+                  "Markup": [
+                    {
+                      "Start": 0,
+                      "Length": 13,
+                      "URL": "https://pubchem.ncbi.nlm.nih.gov/patent/EP-0857488-B1"
+                    }
+                  ]
+                },
+                {
+                  "String": "ES-2225926-T3",
+                  "Markup": [
+                    {
+                      "Start": 0,
+                      "Length": 13,
+                      "URL": "https://pubchem.ncbi.nlm.nih.gov/patent/ES-2225926-T3"
+                    }
+                  ]
+                },
+                {
+                  "String": "KR-19980042501-A",
+                  "Markup": [
+                    {
+                      "Start": 0,
+                      "Length": 16,
+                      "URL": "https://pubchem.ncbi.nlm.nih.gov/patent/KR-19980042501-A"
+                    }
+                  ]
+                },
+                {
+                  "String": "MX-9708722-A",
+                  "Markup": [
+                    {
+                      "Start": 0,
+                      "Length": 12,
+                      "URL": "https://pubchem.ncbi.nlm.nih.gov/patent/MX-9708722-A"
+                    }
+                  ]
+                },
+                {
+                  "String": "NZ-329184-A",
+                  "Markup": [
+                    {
+                      "Start": 0,
+                      "Length": 11,
+                      "URL": "https://pubchem.ncbi.nlm.nih.gov/patent/NZ-329184-A"
+                    }
+                  ]
+                },
+                {
+                  "String": "US-6019988-A",
+                  "Markup": [
+                    {
+                      "Start": 0,
+                      "Length": 12,
+                      "URL": "https://pubchem.ncbi.nlm.nih.gov/patent/US-6019988-A"
+                    }
+                  ]
+                },
+                {
+                  "String": "ZA-9710267-B",
+                  "Markup": [
+                    {
+                      "Start": 0,
+                      "Length": 12,
+                      "URL": "https://pubchem.ncbi.nlm.nih.gov/patent/ZA-9710267-B"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "TOCHeading": "Classification",
+        "Description": "Classifications and ontologies of this patent.",
+        "Section": [
+          {
+            "TOCHeading": "IPC",
+            "Description": "The World Intellectual Properties Organization (WIPO) International Patent Classification (IPC) provides a hierarchical classification system for patents according to the different areas of technology to which they pertain.",
+            "URL": "https://www.wipo.int/classifications/ipc/en/",
+            "Information": [
+              {
+                "ReferenceNumber": 1,
+                "Name": "IPC",
+                "Value": {
+                  "StringWithMarkup": [
+                    {
+                      "String": "A61K9/70 (inventive)"
+                    },
+                    {
+                      "String": "A61K9/06 (inventive)"
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "TOCHeading": "CPC",
+            "Description": "A Patent classification is a system for organizing all patent documents and other technical documents into specific technology groupings based on common subject matter.  The Cooperative Patent Classification (CPC) is jointly managed by the European Patent Office (EPO) and the US Patent and Trademark Office (PTO).  It is divided into nine sections, A-H and Y, which in turn are sub-divided into classes, sub-classes, groups and sub-groups. There are approximately 250 000 classification entries.",
+            "URL": "https://www.cooperativepatentclassification.org",
+            "Information": [
+              {
+                "ReferenceNumber": 1,
+                "Name": "CPC",
+                "Value": {
+                  "StringWithMarkup": [
+                    {
+                      "String": "A61K9/06 (inventive, first)"
+                    },
+                    {
+                      "String": "A61P43/00 (inventive)"
+                    },
+                    {
+                      "String": "A61K9/7023 (inventive)"
+                    },
+                    {
+                      "String": "A61K9/0014 (inventive)"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "TOCHeading": "Similar Patents",
+        "Description": "Other patents similar to this one, based on Google's analysis.",
+        "DisplayControls": {
+          "ListType": "Columns"
+        },
+        "Information": [
+          {
+            "ReferenceNumber": 1,
+            "Name": "Similar Patents",
+            "Value": {
+              "StringWithMarkup": [
+                {
+                  "String": "AR-009428-A1",
+                  "Markup": [
+                    {
+                      "Start": 0,
+                      "Length": 12,
+                      "URL": "https://pubchem.ncbi.nlm.nih.gov/patent/AR-009428-A1"
+                    }
+                  ]
+                },
+                {
+                  "String": "US-10967063-B2",
+                  "Markup": [
+                    {
+                      "Start": 0,
+                      "Length": 14,
+                      "URL": "https://pubchem.ncbi.nlm.nih.gov/patent/US-10967063-B2"
+                    }
+                  ]
+                },
+                {
+                  "String": "US-5238933-A",
+                  "Markup": [
+                    {
+                      "Start": 0,
+                      "Length": 12,
+                      "URL": "https://pubchem.ncbi.nlm.nih.gov/patent/US-5238933-A"
+                    }
+                  ]
+                },
+                {
+                  "String": "AR-021539-A1",
+                  "Markup": [
+                    {
+                      "Start": 0,
+                      "Length": 12,
+                      "URL": "https://pubchem.ncbi.nlm.nih.gov/patent/AR-021539-A1"
+                    }
+                  ]
+                },
+                {
+                  "String": "ES-2058109-T3",
+                  "Markup": [
+                    {
+                      "Start": 0,
+                      "Length": 13,
+                      "URL": "https://pubchem.ncbi.nlm.nih.gov/patent/ES-2058109-T3"
+                    }
+                  ]
+                },
+                {
+                  "String": "AR-033808-A1",
+                  "Markup": [
+                    {
+                      "Start": 0,
+                      "Length": 12,
+                      "URL": "https://pubchem.ncbi.nlm.nih.gov/patent/AR-033808-A1"
+                    }
+                  ]
+                },
+                {
+                  "String": "ES-2028074-T3",
+                  "Markup": [
+                    {
+                      "Start": 0,
+                      "Length": 13,
+                      "URL": "https://pubchem.ncbi.nlm.nih.gov/patent/ES-2028074-T3"
+                    }
+                  ]
+                },
+                {
+                  "String": "EP-0857488-A1"
+                },
+                {
+                  "String": "AR-019997-A1",
+                  "Markup": [
+                    {
+                      "Start": 0,
+                      "Length": 12,
+                      "URL": "https://pubchem.ncbi.nlm.nih.gov/patent/AR-019997-A1"
+                    }
+                  ]
+                },
+                {
+                  "String": "CA-2410990-A1",
+                  "Markup": [
+                    {
+                      "Start": 0,
+                      "Length": 13,
+                      "URL": "https://pubchem.ncbi.nlm.nih.gov/patent/CA-2410990-A1"
+                    }
+                  ]
+                },
+                {
+                  "String": "DE-69011131-D1",
+                  "Markup": [
+                    {
+                      "Start": 0,
+                      "Length": 14,
+                      "URL": "https://pubchem.ncbi.nlm.nih.gov/patent/DE-69011131-D1"
+                    }
+                  ]
+                },
+                {
+                  "String": "EP-1323430-A3",
+                  "Markup": [
+                    {
+                      "Start": 0,
+                      "Length": 13,
+                      "URL": "https://pubchem.ncbi.nlm.nih.gov/patent/EP-1323430-A3"
+                    }
+                  ]
+                },
+                {
+                  "String": "ES-2093747-T3",
+                  "Markup": [
+                    {
+                      "Start": 0,
+                      "Length": 13,
+                      "URL": "https://pubchem.ncbi.nlm.nih.gov/patent/ES-2093747-T3"
+                    }
+                  ]
+                },
+                {
+                  "String": "ES-2180658-T3",
+                  "Markup": [
+                    {
+                      "Start": 0,
+                      "Length": 13,
+                      "URL": "https://pubchem.ncbi.nlm.nih.gov/patent/ES-2180658-T3"
+                    }
+                  ]
+                },
+                {
+                  "String": "ES-2100100-T3",
+                  "Markup": [
+                    {
+                      "Start": 0,
+                      "Length": 13,
+                      "URL": "https://pubchem.ncbi.nlm.nih.gov/patent/ES-2100100-T3"
+                    }
+                  ]
+                },
+                {
+                  "String": "BR-9713492-A",
+                  "Markup": [
+                    {
+                      "Start": 0,
+                      "Length": 12,
+                      "URL": "https://pubchem.ncbi.nlm.nih.gov/patent/BR-9713492-A"
+                    }
+                  ]
+                },
+                {
+                  "String": "PE-20050919-A1",
+                  "Markup": [
+                    {
+                      "Start": 0,
+                      "Length": 14,
+                      "URL": "https://pubchem.ncbi.nlm.nih.gov/patent/PE-20050919-A1"
+                    }
+                  ]
+                },
+                {
+                  "String": "ES-2116572-T3",
+                  "Markup": [
+                    {
+                      "Start": 0,
+                      "Length": 13,
+                      "URL": "https://pubchem.ncbi.nlm.nih.gov/patent/ES-2116572-T3"
+                    }
+                  ]
+                },
+                {
+                  "String": "PT-89892-B",
+                  "Markup": [
+                    {
+                      "Start": 0,
+                      "Length": 10,
+                      "URL": "https://pubchem.ncbi.nlm.nih.gov/patent/PT-89892-B"
+                    }
+                  ]
+                },
+                {
+                  "String": "PE-20040548-A1",
+                  "Markup": [
+                    {
+                      "Start": 0,
+                      "Length": 14,
+                      "URL": "https://pubchem.ncbi.nlm.nih.gov/patent/PE-20040548-A1"
+                    }
+                  ]
+                },
+                {
+                  "String": "ES-2264927-T3",
+                  "Markup": [
+                    {
+                      "Start": 0,
+                      "Length": 13,
+                      "URL": "https://pubchem.ncbi.nlm.nih.gov/patent/ES-2264927-T3"
+                    }
+                  ]
+                },
+                {
+                  "String": "FI-961435-A0",
+                  "Markup": [
+                    {
+                      "Start": 0,
+                      "Length": 12,
+                      "URL": "https://pubchem.ncbi.nlm.nih.gov/patent/FI-961435-A0"
+                    }
+                  ]
+                },
+                {
+                  "String": "AR-064262-A1",
+                  "Markup": [
+                    {
+                      "Start": 0,
+                      "Length": 12,
+                      "URL": "https://pubchem.ncbi.nlm.nih.gov/patent/AR-064262-A1"
+                    }
+                  ]
+                },
+                {
+                  "String": "ES-2253257-T3",
+                  "Markup": [
+                    {
+                      "Start": 0,
+                      "Length": 13,
+                      "URL": "https://pubchem.ncbi.nlm.nih.gov/patent/ES-2253257-T3"
+                    }
+                  ]
+                },
+                {
+                  "String": "BR-0008640-A",
+                  "Markup": [
+                    {
+                      "Start": 0,
+                      "Length": 12,
+                      "URL": "https://pubchem.ncbi.nlm.nih.gov/patent/BR-0008640-A"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ],
+    "Reference": [
+      {
+        "ReferenceNumber": 1,
+        "SourceName": "Google Patents",
+        "SourceID": "AR-009428-A1",
+        "Description": "[Translated] PROCESS TO IMPROVE THE PERMEATION IN THE SKIN OF A PHARMACOLOGICALLY ACTIVE COMPOUND, APPLIED TOPICALLY, WHICH OTHERWISE HAS A LOW SPEED OF PENETRATION IN THE SKIN; DEVICES WITH COMPARTMENTS AND ASSEMBLY USEFUL IN SUCH PROCESS.",
+        "URL": "https://patents.google.com/patent/AR009428A1",
+        "LicenseNote": "\"Google Patents Research Data\" by Google, based on data provided by IFI CLAIMS Patent Services and OntoChem, is licensed under a Creative Commons Attribution 4.0 International License.",
+        "LicenseURL": "https://creativecommons.org/licenses/by/4.0/legalcode"
+      },
+      {
+        "ReferenceNumber": 2,
+        "SourceName": "PubChem",
+        "SourceID": "PubChem",
+        "Description": "Data deposited in or computed by PubChem",
+        "URL": "https://pubchem.ncbi.nlm.nih.gov"
+      }
+    ]
+  }
+}
