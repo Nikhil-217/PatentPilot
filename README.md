@@ -42,6 +42,8 @@ Here is a visual overview of the PatentPilot FTO Workspace:
 
 PatentPilot uses a modular monorepo structure separating the UI client from the calculation and embedding engine:
 
+![System Architecture Diagram](assets/architecture.jpg)
+
 ```mermaid
 graph TD
     %% Frontend Layer
